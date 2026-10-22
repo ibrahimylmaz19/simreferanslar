@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<title>Öykü'ye Hogwarts'tan Bir Mektup 🪄</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#e5c579;--cream:#f6ead1;--ink:#261d19}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;background:radial-gradient(ellipse at 50% 20%,#29334c 0%,#111728 42%,#080b14 100%);overflow-x:hidden}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.star{position:absolute;color:#ffe8a5;animation:twinkle 2.6s ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.2;transform:scale(.7)}to{opacity:1;transform:scale(1.2)}}
+main{position:relative;z-index:1;width:min(900px,92%);margin:auto;padding:34px 0 54px;text-align:center}
+.kicker{font:11px 'Cinzel',serif;letter-spacing:4px;color:var(--gold);margin:14px 0}
+h1,h2{font-family:'Cinzel',Georgia,serif;font-weight:500}
+h1{font-size:clamp(27px,6vw,48px);line-height:1.3;color:var(--gold);margin:15px auto}
+.intro{font-size:clamp(19px,3vw,23px);line-height:1.6;max-width:650px;margin:12px auto 25px;color:#e9e2d4}
+.scene{position:relative;max-width:600px;margin:25px auto 20px;overflow:hidden;border:1px solid #d7b66b88;box-shadow:0 18px 55px #0008;border-radius:5px;transition:opacity .8s,transform .8s}
+.scene img{display:block;width:100%;height:auto;max-height:75vh;object-fit:cover}
+.scene-caption{padding:18px;background:linear-gradient(#101626,#0b1020)}
+.scene-caption p{font-size:21px;line-height:1.55;margin:5px auto;max-width:480px}
+.gold{color:var(--gold)}
+.btn{font:12px 'Cinzel',serif;letter-spacing:1px;color:var(--gold);border:1px solid var(--gold);background:#101625cc;padding:15px 22px;cursor:pointer;transition:.25s;min-height:48px}
+.btn:hover,.btn:focus-visible{background:var(--gold);color:#10121a;box-shadow:0 0 25px #e5c57944;outline:none}
+.btn:disabled{opacity:.55;cursor:default}
+.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px auto}
+.letter-wrap{display:none;max-width:760px;margin:28px auto 0;animation:appear 1.1s ease both}
+.letter-wrap.open{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.envelope-scene{max-width:480px;margin:28px auto;perspective:1000px}
+.envelope{height:210px;position:relative;background:#bda06a;border:1px solid #e5c579;box-shadow:0 15px 40px #0008;overflow:hidden}
+.envelope:before{content:'';position:absolute;inset:0;background:linear-gradient(145deg,transparent 49%,#8c7047 50%,transparent 51%),linear-gradient(35deg,transparent 49%,#d9bd83 50%,transparent 51%);opacity:.85}
+.flap{position:absolute;z-index:3;top:0;left:0;width:100%;height:60%;background:#e2c68e;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform 1s ease;filter:drop-shadow(0 3px 3px #0003)}
+.seal{position:absolute;z-index:4;left:50%;top:47%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#76233b;color:#f2d28c;border:2px solid #b88b4c;font:22px Georgia;box-shadow:0 3px 9px #38201988;transition:opacity .3s}
+.envelope.opened .flap{transform:rotateX(180deg)}
+.envelope.opened .seal{opacity:0}
+.parchment{position:relative;text-align:left;color:var(--ink);background:linear-gradient(135deg,#f8ebcd,#e6d0a3);padding:clamp(22px,5vw,44px);border:1px solid #c9a85e;box-shadow:0 15px 55px #0009}
+.parchment:before{content:'✦';position:absolute;right:18px;top:12px;font-size:24px;color:#98733a}
+.parchment h2{font-size:clamp(20px,4vw,27px);color:#63451f;margin:0 25px 20px 0}
+.parchment p{font-size:clamp(18px,3vw,21px);line-height:1.8;margin:14px 0}
+.signature{text-align:right;font-size:23px;font-style:italic;margin-top:25px}
+.portrait{width:min(100%,380px);display:block;margin:0 auto 20px;border:2px solid #c9a85e;border-radius:180px 180px 10px 10px;box-shadow:0 0 35px #b68c3b33;animation:portraitGlow 4s ease-in-out infinite}
+@keyframes portraitGlow{0%,100%{filter:brightness(.95)}50%{filter:brightness(1.12)}}
+.afterword{font-size:20px;line-height:1.7;text-align:center;color:#f5e8c9;margin:22px auto 0;max-width:600px}
+.final-line{font:11px 'Cinzel',serif;letter-spacing:2px;color:#c8b990;margin-top:34px}
+.spark{position:fixed;z-index:5;pointer-events:none;animation:fly 2.3s ease-out forwards}
+@keyframes fly{0%{opacity:1;transform:translateY(0) scale(.6) rotate(0)}100%{opacity:0;transform:translateY(-180px) scale(1.5) rotate(40deg)}}
+footer{margin-top:22px;color:#b8b1a4;font-size:15px}
+@media(max-width:520px){main{padding-top:22px}.kicker{letter-spacing:2px;font-size:10px}.scene-caption p{font-size:19px}.btn{width:100%}.parchment p{line-height:1.7}.controls{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div>
+<main>
+  <div class="kicker">HOGWARTS'TAN ÖZEL BİR MESAJ</div>
+  <h1>Sevgili Öykü…</h1>
+  <p class="intro" id="intro">Bu gece sana uzaklardan, ay ışığının ve büyünün içinden özel bir mektup gönderildi.</p>
+
+  <section class="scene" id="scene" aria-label="Hogwarts'a uçan baykuş">
+    <img src="baykus-mektup.png" alt="Dolunayın altında Hogwarts şatosuna doğru uçan, mühürlü mektup taşıyan beyaz baykuş">
+    <div class="scene-caption">
+      <p class="gold" id="sceneTitle">Baykuşun getirdiği mektup</p>
+      <p id="sceneText">İçinde bir büyüden çok, belki de söylenmesi gecikmiş birkaç samimi söz var.</p>
+    </div>
+  </section>
+
+  <div class="controls" id="storyControls">
+    <button class="btn" id="startStory">✨ Hikâyeyi Başlat</button>
+    <button class="btn" id="musicToggle" aria-pressed="false">♫ Müziği Aç</button>
+  </div>
+  <p class="intro" id="prompt">Mektubu açmaya hazır mısın?</p>
+  <button class="btn" id="openLetter">✉ Mektubu Aç</button>
+
+  <section class="letter-wrap" id="letter" aria-live="polite">
+    <div class="envelope-scene" id="envelopeScene">
+      <div class="envelope" id="envelope">
+        <div class="flap"></div><div class="seal">H</div>
+      </div>
+    </div>
+    <div class="parchment">
+      <h2>Öykü'ye, kalbimden gelen birkaç söz…</h2>
+      <p>Öykü,</p>
+      <p>Bazen insan, değer verdiği birini kırdığını ya da üzdüğünü sonradan daha iyi anlıyor. Ben de sana hissettirdiklerimi düşündüm ve seni üzdüysem bunun için içtenlikle özür dilemek istiyorum.</p>
+      <p>Belki tek bir mektup her şeyi düzeltemez. Keşke bir sihirli değnekle bütün kırgınlıkları silebilseydim; ama biliyorum ki gerçek bir özür, sadece söylenen sözlerle değil, davranışlarla da anlam kazanır.</p>
+      <p>Seni dinlemek, hislerini anlamaya çalışmak ve hatamı telafi etmek istiyorum.</p>
+      <p>Hogwarts'ta öğrendiğimizi hayal ettiğim en güzel şey şu: En güçlü büyü, bazen cesaret edip kalpten konuşmaktır.</p>
+      <div class="signature">İçtenlikle…<br>Sana değer veren biri 🪄</div>
+    </div>
+    <div style="padding-top:30px">
+      <img class="portrait" src="oyku.jpg" alt="Öykü'nün Hogwarts temalı büyülü portresi">
+      <h2 class="gold">Bu hikâyenin en özel karakteri sensin, Öykü.</h2>
+      <p class="afterword">Her şeyin bir anda mükemmel olmasını beklemiyorum. Ama daha güzelini yapabilmek için çaba göstermeye hazırım. ✨</p>
+      <button class="btn" id="magicButton" style="margin-top:24px">🪄 Biraz Büyü Yap</button>
+    </div>
+  </section>
+  <footer>Yıldızların altında, samimiyetle ✦</footer>
+</main>
+<script>
+const stars=document.getElementById('stars');
+for(let i=0;i<95;i++){const s=document.createElement('span');s.className='star';s.textContent=Math.random()>.72?'✦':'·';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.fontSize=(8+Math.random()*13)+'px';s.style.animationDelay=Math.random()*4+'s';stars.appendChild(s)}
+function magic(count){const symbols=['✦','✨','♥','✧','💛','🪄'];for(let i=0;i<count;i++){const e=document.createElement('span');e.className='spark';e.textContent=symbols[Math.floor(Math.random()*symbols.length)];e.style.left=Math.random()*100+'vw';e.style.top=(45+Math.random()*45)+'vh';e.style.fontSize=(15+Math.random()*22)+'px';document.body.appendChild(e);setTimeout(()=>e.remove(),2400)}}
+
+// Automatic cinematic chapter transitions; start is user-triggered.
+let storyTimers=[];
+function startStory(){
+  storyTimers.forEach(clearTimeout);storyTimers=[];
+  const title=document.getElementById('sceneTitle'), text=document.getElementById('sceneText'), intro=document.getElementById('intro');
+  const chapters=[
+    [0,'Hogwarts’ta bir gece','Şatonun pencerelerinde ışıklar yanıyor; ay, gölün üzerine gümüş bir yol çiziyor.','Bu gece Hogwarts’ta sıradan bir gece değil…'],
+    [3500,'Uzaklardan gelen kanat sesleri','Gökyüzünde beyaz bir baykuş beliriyor. Gagasında kırmızı mühürlü bir mektup var.','Bir baykuş sana doğru yaklaşıyor…'],
+    [7000,'Öykü’ye özel bir mektup','Baykuş mektubu sana ulaştırıyor. İçindeki sözler bir büyüden daha kıymetli olabilir.','Bu mektup yalnızca senin için, Öykü.'],
+    [10500,'Şimdi sıra sende','Mühür seni bekliyor. Hazır olduğunda mektubu aç ve içtenlikle yazılmış sözleri oku.','Bazen en güçlü büyü, kalpten gelen bir özürdür.']
+  ];
+  chapters.forEach(([delay,t,t2,i])=>storyTimers.push(setTimeout(()=>{
+    title.textContent=t;text.textContent=t2;intro.textContent=i;
+    document.getElementById('scene').style.transform='translateY(-2px)';
+    setTimeout(()=>document.getElementById('scene').style.transform='translateY(0)',400);
+    magic(9);
+  },delay)));
+}
+document.getElementById('startStory').addEventListener('click',startStory);
+
+// Create a gentle, original ambient tone using Web Audio only after the visitor opts in.
+let audioCtx=null, master=null, musicOn=false, musicTimer=null, noteIndex=0;
+const notes=[261.63,329.63,392.00,329.63,293.66,349.23,440.00,349.23];
+function playNote(){
+  if(!musicOn||!audioCtx||!master)return;
+  const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+  osc.type='sine';osc.frequency.value=notes[noteIndex++%notes.length];
+  gain.gain.setValueAtTime(0.0001,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.035,audioCtx.currentTime+.15);
+  gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+1.25);
+  osc.connect(gain);gain.connect(master);osc.start();osc.stop(audioCtx.currentTime+1.3);
+}
+document.getElementById('musicToggle').addEventListener('click',async()=>{
+  const btn=document.getElementById('musicToggle');
+  if(!musicOn){
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC){btn.textContent='♫ Tarayıcı ses desteklemiyor';return}
+    audioCtx=audioCtx||new AC();await audioCtx.resume();master=master||audioCtx.createGain();master.gain.value=.5;master.connect(audioCtx.destination);
+    musicOn=true;playNote();musicTimer=setInterval(playNote,850);btn.textContent='♫ Müziği Kapat';btn.setAttribute('aria-pressed','true');
+  }else{
+    musicOn=false;clearInterval(musicTimer);btn.textContent='♫ Müziği Aç';btn.setAttribute('aria-pressed','false');
+  }
+});
+document.getElementById('openLetter').addEventListener('click',()=>{
+  const letter=document.getElementById('letter');
+  letter.classList.add('open');
+  document.getElementById('envelope').classList.add('opened');
+  document.getElementById('openLetter').textContent='✦ Mektup Açıldı';
+  document.getElementById('openLetter').disabled=true;
+  document.getElementById('prompt').textContent='Mühür açıldı. Bu sözler kalpten geliyor…';
+  magic(35);
+  setTimeout(()=>letter.scrollIntoView({behavior:'smooth',block:'start'}),650);
+});
+document.getElementById('magicButton').addEventListener('click',()=>magic(55));
+</script>
+</body>
+</html>
